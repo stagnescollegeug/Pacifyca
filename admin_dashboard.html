@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Pacifyca - St. Agnes College</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <a href="index.html" style="color: inherit; display: flex; align-items: center; gap: 0.5rem;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                Pacifyca - St. Agnes College Admin
+            </a>
+        </div>
+        <div class="nav-links">
+            <span style="font-weight: 500; color: var(--gray);">Admin: <span id="adminName">Admin</span></span>
+            <button onclick="logout()" class="btn btn-secondary" style="padding: 0.5rem 1rem;">Logout</button>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="card" style="max-width: none; margin: 0;">
+            <h3>Manage Applications</h3>
+            <p style="color: var(--gray); margin-bottom: 1.5rem;">Review and process student admission applications.</p>
+            <div style="overflow-x: auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>App ID</th>
+                            <th>Student</th>
+                            <th>Course</th>
+                            <th>Status</th>
+                            <th>Applied On</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminAppsTableBody">
+                        <tr><td colspan="6" style="text-align: center;">Loading applications...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
