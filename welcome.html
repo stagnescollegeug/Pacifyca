@@ -1,86 +1,337 @@
-<script src="js/main.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Student Dashboard</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/style.css">
+
+    <style>
+        body{
+            margin:0;
+            font-family: Arial, sans-serif;
+            background:#f1f5f9;
+        }
+
+        .dashboard-container{
+            padding:20px;
+        }
+
+        .welcome-banner{
+            background:white;
+            border-radius:12px;
+            padding:20px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            margin-bottom:20px;
+            box-shadow:0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .welcome-banner h2{
+            color:#2563eb;
+            margin-bottom:8px;
+        }
+
+        .welcome-illustration{
+            width:120px;
+        }
+
+        .main-tabs{
+            display:flex;
+            flex-wrap:wrap;
+            gap:10px;
+            margin-bottom:20px;
+        }
+
+        .main-tabs button{
+            padding:10px 16px;
+            border:none;
+            background:#e2e8f0;
+            border-radius:6px;
+            cursor:pointer;
+            font-weight:600;
+        }
+
+        .main-tabs button.active{
+            background:#2563eb;
+            color:white;
+        }
+
+        .tab-content{
+            display:none;
+            background:white;
+            padding:20px;
+            border-radius:10px;
+            box-shadow:0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .tab-content.active{
+            display:block;
+        }
+
+        table{
+            width:100%;
+            border-collapse:collapse;
+        }
+
+        th, td{
+            border:1px solid #cbd5e1;
+            padding:12px;
+            text-align:center;
+        }
+
+        th{
+            background:#eff6ff;
+        }
+
+        .profile-grid{
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:15px;
+            margin-top:20px;
+        }
+
+        .profile-label{
+            color:#0369a1;
+            font-weight:bold;
+        }
+
+        .profile-section{
+            display:flex;
+            gap:40px;
+            flex-wrap:wrap;
+        }
+
+        .profile-photo{
+            text-align:center;
+        }
+
+        .profile-photo img{
+            width:130px;
+            height:160px;
+            object-fit:cover;
+            border:2px solid #94a3b8;
+            border-radius:6px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="dashboard-container">
+
+    <!-- Welcome -->
+    <div class="welcome-banner">
+
+        <div>
+            <h2 id="welcomeText">Hello, STUDENT</h2>
+            <p>Welcome to your student dashboard</p>
+        </div>
+
+        <img src="images/dashboard_illustration.png"
+             class="welcome-illustration"
+             alt="Graduation Cap">
+
+    </div>
+
+    <!-- Tabs -->
+    <div class="main-tabs">
+
+        <button class="active"
+                id="tab-fees"
+                onclick="switchTab('fees')">
+            Fees
+        </button>
+
+        <button id="tab-result"
+                onclick="switchTab('result')">
+            Result
+        </button>
+
+        <button id="tab-profile"
+                onclick="switchTab('profile')">
+            Student Profile
+        </button>
+
+    </div>
+
+    <!-- FEES -->
+    <div id="content-fees"
+         class="tab-content active">
+
+        <h3>Admission Fees</h3>
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Actions</th>
+                    <th>Fee Type</th>
+                    <th>Date</th>
+                    <th>Pending Amount</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>
+                        <button style="
+                            background:#2563eb;
+                            color:white;
+                            border:none;
+                            padding:10px 15px;
+                            border-radius:5px;
+                            cursor:pointer;
+                        ">
+                            Full Payment
+                        </button>
+                    </td>
+
+                    <td>Admission Fees</td>
+
+                    <td>08/06/2026</td>
+
+                    <td>55,152.00</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <!-- RESULT -->
+    <div id="content-result"
+         class="tab-content">
+
+        <h2 style="text-align:center;">
+            Marks Cum Grade Card
+        </h2>
+
+        <div style="text-align:center; margin-top:20px;">
+
+            <img src="images/result_new.png"
+                 alt="Result"
+                 style="
+                    width:100%;
+                    max-width:800px;
+                    border-radius:10px;
+                 ">
+
+        </div>
+
+    </div>
+
+    <!-- PROFILE -->
+    <div id="content-profile"
+         class="tab-content">
+
+        <h2>Student Profile</h2>
+
+        <div class="profile-section">
+
+            <!-- LEFT -->
+            <div style="flex:1; min-width:300px;">
+
+                <div class="profile-grid">
+
+                    <div class="profile-label">DOB</div>
+                    <div>14/10/2005</div>
+
+                    <div class="profile-label">Gender</div>
+                    <div>F</div>
+
+                    <div class="profile-label">Mother Tongue</div>
+                    <div>Tulu</div>
+
+                    <div class="profile-label">Blood Group</div>
+                    <div>O+</div>
+
+                    <div class="profile-label">Religion</div>
+                    <div>Hindu</div>
+
+                    <div class="profile-label">Combination</div>
+                    <div>B.C.A.</div>
+
+                    <div class="profile-label">Year</div>
+                    <div>III YEAR</div>
+
+                    <div class="profile-label">Register No</div>
+                    <div>24301908</div>
+
+                </div>
+
+            </div>
+
+            <!-- RIGHT -->
+            <div class="profile-photo">
+
+                <img src="images/profile.jpg"
+                     alt="Profile Photo">
+
+                <h3>SHRINIDHI ALVA</h3>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- SCRIPT -->
 <script>
+
+function switchTab(tabName){
+
+    const tabs = ['fees', 'result', 'profile'];
+
+    tabs.forEach(tab => {
+
+        document
+            .getElementById('content-' + tab)
+            .classList
+            .remove('active');
+
+        document
+            .getElementById('tab-' + tab)
+            .classList
+            .remove('active');
+
+    });
+
+    document
+        .getElementById('content-' + tabName)
+        .classList
+        .add('active');
+
+    document
+        .getElementById('tab-' + tabName)
+        .classList
+        .add('active');
+}
+
 document.addEventListener('DOMContentLoaded', () => {
 
-    const user = JSON.parse(localStorage.getItem('user'));
+    const user =
+        JSON.parse(localStorage.getItem('user'));
 
     if(user){
 
-        const userName = document.getElementById('userName');
-        const welcomeText = document.getElementById('welcomeText');
-        const popupWelcome = document.getElementById('popupWelcome');
-
-        if(userName){
-            userName.textContent = user.name.toUpperCase();
-        }
-
-        if(welcomeText){
-            welcomeText.textContent =
-                'Hello, ' + user.name.toUpperCase();
-        }
-
-        if(popupWelcome){
-            popupWelcome.textContent =
-                'Hello, ' + user.name.toUpperCase();
-        }
+        document
+            .getElementById('welcomeText')
+            .textContent =
+            'Hello, ' + user.name.toUpperCase();
     }
+
 });
 
-function switchTab(tabName) {
-
-    const allTabs = [
-        'fees',
-        'quiz',
-        'internal',
-        'admission',
-        'result',
-        'exam',
-        'choice',
-        'feedback',
-        'extra',
-        'profile'
-    ];
-
-    allTabs.forEach(tab => {
-
-        const contentEl =
-            document.getElementById('content-' + tab);
-
-        const tabEl =
-            document.getElementById('tab-' + tab);
-
-        if(contentEl){
-            contentEl.style.display = 'none';
-        }
-
-        if(tabEl){
-            tabEl.classList.remove('active');
-        }
-    });
-
-    const selectedContent =
-        document.getElementById('content-' + tabName);
-
-    const selectedTab =
-        document.getElementById('tab-' + tabName);
-
-    if(selectedContent){
-        selectedContent.style.display = 'block';
-    }
-
-    if(selectedTab){
-        selectedTab.classList.add('active');
-    }
-}
-
-function closeWelcome(){
-
-    const overlay =
-        document.getElementById('welcomeOverlay');
-
-    if(overlay){
-        overlay.style.display = 'none';
-    }
-}
 </script>
+
+</body>
+</html>
