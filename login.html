@@ -1,72 +1,98 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Pacifyca - St. Agnes College</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
 <body>
-    <form id="loginForm">
-  <input type="text" id="username" required>
-  <input type="password" id="password" required>
-
-  <button type="submit">Login</button>
-</form>
-    <div class="login-split">
-        <div class="login-left">
+ <h1>Welcome Back!</h1>
+ <div class="login-split">
+ <div class="login-left">
             <div class="logo">
-                <img src="images/college-logo.jpg" alt="Logo" style="height: 40px; width: auto; object-fit: contain; vertical-align: middle; margin-right: 8px;">
-                Pacifyca - St. Agnes College
+                <img src="images/college-logo.jpg"
+                     alt="Logo"
+                     style="height:40px;width:auto;object-fit:contain;vertical-align:middle;margin-right:8px;">
+  Pacifyca - St. Agnes College
             </div>
-            <div style="margin-top: 4rem;">
-                <h1>Welcome Back!</h1>
+ <div style="margin-top:4rem;">
                 <p>Login to access your student portal</p>
-                <img src="images/login_illustration.png" alt="Student studying">
-            </div>
+     <img src="images/login_illustration.png"
+                     alt="Student studying">
+ </div>
         </div>
-        
-        <div class="login-right">
-            <div class="login-form-container">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+<div class="login-right">
+ <div class="login-form-container">
+
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;">
                     <h2>Login</h2>
-                    <a href="register.html" class="btn btn-outline" style="font-size: 0.85rem; padding: 0.4rem 0.8rem;">Admission Login</a>
+
+                    <a href="register.html"
+                       class="btn btn-outline"
+                       style="font-size:0.85rem;padding:0.4rem 0.8rem;">
+                        Admission Login
+                    </a>
                 </div>
-                
+
                 <div id="alertMsg" class="alert"></div>
-                
+
+                <!-- ONLY ONE FORM -->
                 <form id="loginForm">
+
                     <div class="form-group">
-                        <label for="email">Username</label>
-                        <input type="text" id="email" class="form-control" required placeholder="Enter your username">
+                        <label for="username">Username</label>
+
+                        <input type="text"
+                               id="username"
+                               class="form-control"
+                               required
+                               placeholder="Enter your username">
                     </div>
+
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" id="password" class="form-control" required placeholder="Enter your password">
+
+                        <input type="password"
+                               id="password"
+                               class="form-control"
+                               required
+                               placeholder="Enter your password">
                     </div>
-                    <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Login</button>
-                    <div style="text-align: center; margin-top: 1.5rem;">
-                        <a href="#" style="font-size: 0.9rem;">Forgot Your Password?</a>
+
+                    <button type="submit"
+                            class="btn btn-primary"
+                            style="width:100%;margin-top:1rem;">
+                        Login
+                    </button>
+
+                    <div style="text-align:center;margin-top:1.5rem;">
+                        <a href="#" style="font-size:0.9rem;">
+                            Forgot Your Password?
+                        </a>
                     </div>
+
                 </form>
+
             </div>
         </div>
     </div>
 
-    <script src="js/main.js"></script>
     <script>
-document.getElementById("loginForm").addEventListener("submit", function(e) {
-    e.preventDefault();
+        document.getElementById("loginForm")
+        .addEventListener("submit", function(e) {
 
-    const username = document.getElementById("username").value;
-    const password = document.getElementById("password").value;
+            e.preventDefault();
 
-    if(username === "ug24908" && password === "14102005") {
-        window.location.href = "student_dashboard.html";
-    } else {
-        alert("Invalid login");
-    }
-});
-</script>
+            const username =
+                document.getElementById("username").value;
+
+            const password =
+                document.getElementById("password").value;
+
+            if(username === "ug24908" &&
+               password === "14102005") {
+
+                window.location.href =
+                    "student_dashboard.html";
+
+            } else {
+
+                alert("Invalid login");
+            }
+        });
+    </script>
+
 </body>
-</html>
