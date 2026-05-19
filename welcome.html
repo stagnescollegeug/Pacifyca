@@ -4,70 +4,186 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome</title>
+ <!-- Dashboard Inner -->
+            <div class="dashboard-container">
+                <div class="welcome-banner">
+                    <div>
+                        <h2 id="welcomeText">Hello, STUDENT</h2>
+                        <p>Welcome to your student dashboard</p>
+                    </div>
+                    <img src="images/dashboard_illustration.png" class="welcome-illustration" alt="Graduation Cap">
+                </div>
 
-    <style>
-        body{
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            height:100vh;
-            font-family:Arial, sans-serif;
-            background:#f1f5f9;
-        }
+                <div class="tabs-container">
+                    <div class="main-tabs">
+                        <button class="active" id="tab-fees" onclick="switchTab('fees')">Fees</button>
+                        <button id="tab-quiz" onclick="switchTab('quiz')">Quiz</button>
+                        <button id="tab-internal" onclick="switchTab('internal')">Internal Marks Verification</button>
+                        <button id="tab-admission" onclick="switchTab('admission')">Admission Card</button>
+                        <button id="tab-result" onclick="switchTab('result')">Result</button>
+                        <button id="tab-exam" onclick="switchTab('exam')">Exam Application</button>
+                        <button id="tab-choice" onclick="switchTab('choice')">Choice Based Subject Preference</button>
+                        <button id="tab-feedback" onclick="switchTab('feedback')">Feedback</button>
+                        <button id="tab-extra" onclick="switchTab('extra')">Extra Curricular Activities</button>
+                        <button id="tab-profile" onclick="switchTab('profile')">Student Profile</button>
+                    </div>
 
-        .card{
-            background:white;
-            padding:40px;
-            border-radius:12px;
-            box-shadow:0 4px 12px rgba(0,0,0,0.1);
-            text-align:center;
-        }
+                    <div id="content-fees" style="padding: 1.5rem;">
+                        <div class="sub-tabs">
+                            <button class="active">Admission Fees</button>
+                            <button>Examination Fee</button>
+                        </div>
 
-        h1{
-            color:#2563eb;
-        }
+                        <div id="alertMsg" class="alert"></div>
 
-        button{
-            margin-top:20px;
-            padding:10px 20px;
-            border:none;
-            background:#2563eb;
-            color:white;
-            border-radius:6px;
-            cursor:pointer;
-        }
-    </style>
-</head>
+                        <div style="overflow-x: auto; border: 1px solid #94a3b8; background: var(--white); margin-top: 1rem;">
+                            <table style="width: 100%; border-collapse: collapse; text-align: center;">
+                                <thead>
+                                    <tr style="border-bottom: 1px solid #94a3b8;">
+                                        <th style="padding: 0.8rem; border-right: 1px solid #94a3b8; color: #0f172a; font-weight: 600;">Actions</th>
+                                        <th style="padding: 0.8rem; border-right: 1px solid #94a3b8; color: #0f172a; font-weight: 600;">Fee Type</th>
+                                        <th style="padding: 0.8rem; border-right: 1px solid #94a3b8; color: #0f172a; font-weight: 600;">Date</th>
+                                        <th style="padding: 0.8rem; color: #0f172a; font-weight: 600;">Pending<br>Amount</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="feesTableBody">
+                                    <tr style="border-bottom: 1px solid #94a3b8;">
+                                        <td style="padding: 0.5rem; border-right: 1px solid #94a3b8;">
+                                            <button class="btn btn-primary" style="background-color: #2563eb; font-size: 0.9rem; padding: 0.5rem 0.8rem; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">Full<br>Payment</button>
+                                        </td>
+                                        <td style="padding: 0.8rem; border-right: 1px solid #94a3b8; color: #334155;">Admission<br>Fees</td>
+                                        <td style="padding: 0.8rem; border-right: 1px solid #94a3b8; color: #334155;">Due Date:<br>08/06/2026</td>
+                                        <td style="padding: 0.8rem; color: #334155;">55,152.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 0.8rem; border-right: 1px solid #94a3b8;"></td>
+                                        <td style="padding: 0.8rem; border-right: 1px solid #94a3b8; font-weight: 700; color: #0f172a;">Total</td>
+                                        <td style="padding: 0.8rem; border-right: 1px solid #94a3b8;"></td>
+                                        <td style="padding: 0.8rem; font-weight: 700; color: #0f172a;">55,152.00</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
 
-<body>
+                    <div id="content-result" style="display: none; padding: 1.5rem; text-align: center; background: #f0f2f5;">
+                        <h3 style="margin-bottom: 1rem; color: var(--dark);">Marks Cum Grade Card</h3>
+                        <img src="images/result_new.png" alt="Result Image" style="width: 100%; max-width: 800px; height: auto; object-fit: contain; display: block; margin: 0 auto; border: 1px solid var(--border); box-shadow: var(--shadow); border-radius: 8px;">
+                    </div>
 
-    <div class="card">
-        <h1 id="welcomeText">Hello, Student</h1>
+                    <div id="content-profile" style="display: none; padding: 2rem; background: #e0f2fe;">
+                        <div style="display: flex; justify-content: flex-end; margin-bottom: 1rem;">
+                            <button class="btn btn-primary" style="background-color: #1d4ed8;">Update ABC ID</button>
+                        </div>
+                        
+                        <h3 style="margin-bottom: 1.5rem; border-bottom: 2px solid #bae6fd; padding-bottom: 0.5rem; color: #0f172a;">Personal Details</h3>
+                        
+                        <div style="display: flex; flex-wrap: wrap; gap: 2rem; margin-bottom: 2rem;">
+                            <div style="flex: 1; min-width: 300px; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; color: #334155; font-size: 0.95rem;">
+                                <div style="color: #0369a1;">DOB</div><div>14/10/2005</div>
+                                <div style="color: #0369a1;">Gender</div><div>F</div>
+                                <div style="color: #0369a1;">Mother Tongue</div><div>Tulu</div>
+                                <div style="color: #0369a1;">Blood Group</div><div>O+</div>
+                                <div style="color: #0369a1;">Aadhaar No</div><div>848373172912</div>
+                                <div style="color: #0369a1;">Religion</div><div>Hindu</div>
+                                <div style="color: #0369a1;">Caste</div><div>Bunt</div>
+                                <div style="color: #0369a1;">Caste Category</div><div>3B</div>
+                                <div style="color: #0369a1;">Student Mobile Number</div><div>9538685958</div>
+                                <div style="color: #0369a1;">Student Email</div><div>shrinidhialva7@gmail.com</div>
+                                <div style="color: #0369a1;">Combination</div><div>B.C.A.</div>
+                                <div style="color: #0369a1;">Year</div><div>III YEAR</div>
+                                <div style="color: #0369a1;">Admission No</div><div>20240185</div>
+                                <div style="color: #0369a1;">Batch</div><div>B</div>
+                                <div style="color: #0369a1;">Register No</div><div>24301908</div>
+                                <div style="color: #0369a1;">Roll No</div><div>24908</div>
+                                <div style="color: #0369a1;">Height</div><div>Height Units</div>
+                                <div style="color: #0369a1;">Weight</div><div>Weight Units</div>
+                                <div style="color: #0369a1;">University Register No</div><div>U05AB24S0088</div>
+                            </div>
+                            <div style="width: 150px; text-align: center;">
+                                <img src="images/profile.jpg" alt="Profile Photo" style="width: 130px; height: 160px; object-fit: cover; border: 2px solid #94a3b8; margin: 0 auto 0.5rem auto; border-radius: 4px; display: block;">
+                                <div style="font-weight: 600; font-size: 0.9rem; color: #0f172a;">SHRINIDHI ALVA</div>
+                            </div>
+                        </div>
 
-        <p>Welcome to Pacifyca Portal</p>
+                        <h3 style="margin-bottom: 1.5rem; border-bottom: 2px solid #bae6fd; padding-bottom: 0.5rem; color: #0f172a;">Parent Details</h3>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; color: #334155; font-size: 0.95rem; margin-bottom: 2rem;">
+                            <div style="color: #0369a1;">Father's Name</div><div>LATE RAMANANDA ALVA</div>
+                            <div style="color: #0369a1;">Father's Mobile Number</div><div></div>
+                            <div style="color: #0369a1;">Father's Email</div><div></div>
+                            <div style="color: #0369a1;">Father's Occupation</div><div></div>
+                            <div style="color: #0369a1;">Mother's Name</div><div>YASHODHA ALVA</div>
+                            <div style="color: #0369a1;">Mother's Mobile Number</div><div>9538685958</div>
+                            <div style="color: #0369a1;">Mother's Email</div><div></div>
+                            <div style="color: #0369a1;">Mother's Occupation</div><div>HOMEMAKER</div>
+                        </div>
 
-        <button onclick="goDashboard()">
-            Go to Dashboard
-        </button>
+                        <h3 style="margin-bottom: 1.5rem; border-bottom: 2px solid #bae6fd; padding-bottom: 0.5rem; color: #0f172a;">Address Details (Permanent)</h3>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; color: #334155; font-size: 0.95rem; margin-bottom: 2rem;">
+                            <div style="color: #0369a1;">House No. / Name / Apt. Name</div><div>DOOR NO 8-132/4, GYAAN 4TH B CROSS</div>
+                            <div style="color: #0369a1;">Village / Street</div><div>KODIKAL</div>
+                            <div style="color: #0369a1;">City / Taluk</div><div>MANGALURU</div>
+                            <div style="color: #0369a1;">District</div><div>DAKSHINA KANNADA</div>
+                            <div style="color: #0369a1;">State / Union Territory</div><div>KARNATAKA</div>
+                            <div style="color: #0369a1;">Pincode</div><div>575006</div>
+                        </div>
+
+                        <h3 style="margin-bottom: 1.5rem; border-bottom: 2px solid #bae6fd; padding-bottom: 0.5rem; color: #0f172a;">Address Details (Present)</h3>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; color: #334155; font-size: 0.95rem;">
+                            <div style="color: #0369a1;">Address Type</div><div>Same as Permanent</div>
+                            <div style="color: #0369a1;">House No. / Name / Apt. Name</div><div>DOOR NO 8-132/4, GYAAN 4TH B CROSS</div>
+                            <div style="color: #0369a1;">Village / Street</div><div>KODIKAL</div>
+                            <div style="color: #0369a1;">City / Taluk</div><div>MANGALURU</div>
+                            <div style="color: #0369a1;">District</div><div>DAKSHINA KANNADA</div>
+                            <div style="color: #0369a1;">State / Union Territory</div><div>KARNATAKA</div>
+                            <div style="color: #0369a1;">Pincode</div><div>575006</div>
+                        </div>
+                    </div>
+
+                    <div id="content-quiz" style="display: none; padding: 3rem; text-align: center; color: #64748b;"><h3>Nothing here</h3></div>
+                    <div id="content-internal" style="display: none; padding: 3rem; text-align: center; color: #64748b;"><h3>Nothing here</h3></div>
+                    <div id="content-admission" style="display: none; padding: 3rem; text-align: center; color: #64748b;"><h3>Nothing here</h3></div>
+                    <div id="content-exam" style="display: none; padding: 3rem; text-align: center; color: #64748b;"><h3>Nothing here</h3></div>
+                    <div id="content-choice" style="display: none; padding: 3rem; text-align: center; color: #64748b;"><h3>Nothing here</h3></div>
+                    <div id="content-feedback" style="display: none; padding: 3rem; text-align: center; color: #64748b;"><h3>Nothing here</h3></div>
+                    <div id="content-extra" style="display: none; padding: 3rem; text-align: center; color: #64748b;"><h3>Nothing here</h3></div>
+
+                </div>
+            </div>
+        </main>
     </div>
 
+    <script src="js/main.js"></script>
     <script>
+        // Update greeting based on user
+        document.addEventListener('DOMContentLoaded', () => {
+            const user = JSON.parse(localStorage.getItem('user'));
+            if(user) {
+                document.getElementById('userName').textContent = user.name.toUpperCase();
+                document.getElementById('welcomeText').textContent = 'Hello, ' + user.name.toUpperCase();
+            }
+        });
 
-        const user =
-            JSON.parse(localStorage.getItem('user'));
+        function switchTab(tabName) {
+            // All tab IDs
+            const allTabs = ['fees', 'quiz', 'internal', 'admission', 'result', 'exam', 'choice', 'feedback', 'extra', 'profile'];
+            
+            // Hide all contents and remove active class
+            allTabs.forEach(tab => {
+                const contentEl = document.getElementById('content-' + tab);
+                const tabEl = document.getElementById('tab-' + tab);
+                
+                if (contentEl) contentEl.style.display = 'none';
+                if (tabEl) tabEl.classList.remove('active');
+            });
 
-        if(user){
-            document.getElementById('welcomeText')
-            .textContent =
-                "Hello, " + user.name.toUpperCase();
+            // Show selected
+            const selectedContent = document.getElementById('content-' + tabName);
+            const selectedTab = document.getElementById('tab-' + tabName);
+            
+            if (selectedContent) selectedContent.style.display = 'block';
+            if (selectedTab) selectedTab.classList.add('active');
         }
-
-        function goDashboard(){
-            window.location.href =
-                "student_dashboard.html";
-        }
-
     </script>
-
 </body>
 </html>
