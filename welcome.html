@@ -183,6 +183,31 @@
             
             if (selectedContent) selectedContent.style.display = 'block';
             if (selectedTab) selectedTab.classList.add('active');
+            function closeWelcome(){
+
+    document.getElementById('welcomeOverlay')
+    .style.display = 'none';
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    const user =
+        JSON.parse(localStorage.getItem('user'));
+
+    if(user){
+
+        document.getElementById('userName')
+        .textContent = user.name.toUpperCase();
+
+        document.getElementById('welcomeText')
+        .textContent =
+            'Hello, ' + user.name.toUpperCase();
+
+        document.getElementById('popupWelcome')
+        .textContent =
+            'Hello, ' + user.name.toUpperCase();
+    }
+});
         }
     </script>
 </body>
