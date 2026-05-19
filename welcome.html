@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+
+    <style>
+        body{
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+            font-family:Arial, sans-serif;
+            background:#f1f5f9;
+        }
+
+        .card{
+            background:white;
+            padding:40px;
+            border-radius:12px;
+            box-shadow:0 4px 12px rgba(0,0,0,0.1);
+            text-align:center;
+        }
+
+        h1{
+            color:#2563eb;
+        }
+
+        button{
+            margin-top:20px;
+            padding:10px 20px;
+            border:none;
+            background:#2563eb;
+            color:white;
+            border-radius:6px;
+            cursor:pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+        <h1 id="welcomeText">Hello, Student</h1>
+
+        <p>Welcome to Pacifyca Portal</p>
+
+        <button onclick="goDashboard()">
+            Go to Dashboard
+        </button>
+    </div>
+
+    <script>
+
+        const user =
+            JSON.parse(localStorage.getItem('user'));
+
+        if(user){
+            document.getElementById('welcomeText')
+            .textContent =
+                "Hello, " + user.name.toUpperCase();
+        }
+
+        function goDashboard(){
+            window.location.href =
+                "student_dashboard.html";
+        }
+
+    </script>
+
+</body>
+</html>
