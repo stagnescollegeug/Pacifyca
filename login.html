@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <img src="images/logo.png">
     <form id="loginForm">
   <input type="text" id="username" required>
   <input type="password" id="password" required>
@@ -62,8 +61,8 @@ document.getElementById("loginForm").addEventListener("submit", function(e) {
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
 
-    if(username === "ug24908" && password === "123456") {
-        window.location.href = "dashboard.html";
+    if(username === "ug24908" && password === "14102005") {
+        window.location.href = "student_dashboard.html";
     } else {
         alert("Invalid login");
     }
